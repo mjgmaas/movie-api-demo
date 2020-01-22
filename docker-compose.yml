@@ -42,7 +42,7 @@ services:
         build:
             context: .docker/composer
         restart: 'no'
-        command: install -d /var/www/html --ignore-platform-reqs --no-scripts
+        command: install -d /var/www/html --ignore-platform-reqs
         volumes:
             - .:/var/www/html
         depends_on:
