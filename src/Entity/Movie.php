@@ -37,6 +37,11 @@ class Movie
      */
     private $priceType;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $runtime;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Movie
     public function setPriceType(?string $priceType): self
     {
         $this->priceType = $priceType;
+
+        return $this;
+    }
+
+    public function getRuntime(): ?int
+    {
+        return $this->runtime;
+    }
+
+    public function setRuntime(?int $runtime): self
+    {
+        $this->runtime = $runtime;
 
         return $this;
     }

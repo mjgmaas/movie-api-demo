@@ -13,6 +13,12 @@ git clone https://github.com/mjgmaas/movie-api-demo.git
 docker-compose up
 ```
 
+## Unittests
+
+``` bash
+bin/phpunit
+```
+
 
 Swagger Api docs [http://localhost:8080/api/doc](http://localhost:8080/api/doc)
  

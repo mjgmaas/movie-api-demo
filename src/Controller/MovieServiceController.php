@@ -78,8 +78,8 @@ class MovieServiceController extends AbstractFOSRestController {
      *             @SWG\Property(property="title", type="string"),
      *             @SWG\Property(property="genre", type="integer"),
      *             @SWG\Property(property="released", type="yyy-mm-dd"),
-     *             @SWG\Property(property="price_type", type="string (default, long, kids)"),
-     *             example={"title": "string", "genre": 1, "released": "2020-12-20","price_type": "long"}
+     *             @SWG\Property(property="price_type", type="string (default, length, kids)"),
+     *             example={"title": "string", "genre": 1, "released": "2020-12-20","price_type": "length"}
      *         )
      *      )
      *     ),

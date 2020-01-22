@@ -9,5 +9,12 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-.idea/*
+.id
+.idea
 .docker/data/*
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###

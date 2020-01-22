@@ -94,7 +94,8 @@ final class MovieAssembler
             $movie->getTitle(),
             new GenreOutputDTO($movie->getGenre()->getId(), $movie->getGenre()->getName()),
             $movie->getReleased(),
-            $priceCalculator->getPrice($movie)
+            $priceCalculator->getPrice($movie),
+            $movie->getRuntime()
         );
     }
 

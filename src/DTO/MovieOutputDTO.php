@@ -39,18 +39,23 @@ final class MovieOutputDTO {
      */
     private $price;
 
+    /**
+     * @var integer§
+     */
+    private $runtime;
 
     /**
      * MovieInputDTO constructor.
      * @param string $title
      * @param string $content
      */
-    public function __construct(int $id, string $title = '',  GenreOutputDTO $genre = null, \DateTimeInterface $released = null, float $price) {
+    public function __construct(int $id, string $title = '',  GenreOutputDTO $genre = null, \DateTimeInterface $released = null, float $price, ?int $runtime) {
         $this->id = $id;
         $this->title = $title;
         $this->genre = $genre;
         $this->released = $released;
         $this->price = $price;
+        $this->runtime = $runtime;
 
     }
 
