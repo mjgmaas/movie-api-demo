@@ -29,17 +29,23 @@ final class MovieInputDTO {
      */
     private $priceType;
 
+    /**
+     * @var string
+     */
+    private $imdbID;
+
 
     /**
      * MovieInputDTO constructor.
      * @param string $title
      * @param string $content
      */
-    public function __construct(string $title = '', int $genre = null, string $released, string $priceType = null) {
+    public function __construct(string $title = '', int $genre = null, string $released, string $priceType = null, $imdbID = null) {
         $this->title = $title;
         $this->genre = $genre;
         $this->released = $released;
         $this->priceType = $priceType ?? 'default';
+        $this->imdbID = $imdbID;
     }
 
     /**
@@ -61,5 +67,19 @@ final class MovieInputDTO {
      */
     public function getReleased(): string {
         return $this->released;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPriceType(): string {
+        return $this->priceType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImdbID(): string {
+        return $this->imdbID;
     }
 }

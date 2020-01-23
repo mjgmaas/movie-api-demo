@@ -62,7 +62,7 @@ class MovieServiceController extends AbstractFOSRestController {
     /**
      * Creates an Movie resource
      *
-     * @Rest\Post("/movies")
+     * @Rest\Post("/movie")
      *
      * @SWG\Post(
      *     consumes={"application/json"},
@@ -79,7 +79,8 @@ class MovieServiceController extends AbstractFOSRestController {
      *             @SWG\Property(property="genre", type="integer"),
      *             @SWG\Property(property="released", type="yyy-mm-dd"),
      *             @SWG\Property(property="price_type", type="string (default, length, kids)"),
-     *             example={"title": "string", "genre": 1, "released": "2020-12-20","price_type": "length"}
+     *             @SWG\Property(property="imdb_id", type="string (default, length, kids)"),
+     *             example={"title": "string", "genre": 1, "released": "2020-12-20","price_type": "length", "imdb_id": "tt2527338"}
      *         )
      *      )
      *     ),
@@ -98,7 +99,8 @@ class MovieServiceController extends AbstractFOSRestController {
             $request->get('title'),
             $request->get('genre'),
             $request->get('released'),
-            $request->get('price_type', 'default')
+            $request->get('price_type', 'default'),
+            $request->get('imdb_id')
         );
 
         $movieEntity = $this->movieAssembler->createMovie($movieDTO);

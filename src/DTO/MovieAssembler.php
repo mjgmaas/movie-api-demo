@@ -4,12 +4,15 @@
 namespace App\DTO;
 
 
+use App\Adapter\ImdbConnector;
+use App\Adapter\OmdbWebserviceAdapter;
 use App\DTO\MovieInputDTO;
 use App\Entity\Genre;
 use App\Entity\Movie;
 use App\Repository\GenreRepository;
 use Doctrine\ORM\EntityNotFoundException;
 use App\Model\Movie\PriceCalculatorFactory;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class MovieAssembler
@@ -19,10 +22,16 @@ final class MovieAssembler
 {
     private $genreRepository;
     private $priceCalculatorFactory;
+    private $ImdbWebservice;
 
-    public function __construct(GenreRepository $genreRepository, PriceCalculatorFactory $priceCalculatorFactory) {
+    public function __construct(GenreRepository $genreRepository,
+                                PriceCalculatorFactory $priceCalculatorFactory,
+                                ImdbConnector $imdbConnector
+
+    ) {
         $this->genreRepository = $genreRepository;
         $this->priceCalculatorFactory = $priceCalculatorFactory;
+        $this->ImdbWebservice = $imdbConnector;
     }
 
 
@@ -44,6 +53,8 @@ final class MovieAssembler
         $movie->setTitle($movieDTO->getTitle());
         $movie->setGenre($genre);
         $movie->setReleased(new \DateTime($movieDTO->getReleased()));
+        $movie->setPriceType($movieDTO->getPriceType());
+        $movie->setImdbID($movieDTO->getImdbID());
 
         return $movie;
     }
@@ -82,6 +93,22 @@ final class MovieAssembler
         );
     }
 
+    private function getMovieRuntime(Movie $movie) {
+        if(!$movie->getRuntime() && $movie->getImdbID()){
+            try{
+                $movieData = $this->ImdbWebservice->getMovie($movie->getImdbID());
+            }
+            catch (NotFoundHttpException $e){
+                return null;
+            }
+            preg_match('/\d+/', $movieData['Runtime'], $matches);
+            if(count($matches) && is_numeric( $matches[0])) {
+                return  $matches[0];
+            }
+        }
+        return null;
+    }
+
     public function createMovieOutputDTO(Movie $movie)
     {
         /**
@@ -89,13 +116,16 @@ final class MovieAssembler
          */
         $priceCalculator = $this->priceCalculatorFactory->createPriceCalculator($movie->getPriceType());
 
+        $runtime = $this->getMovieRuntime($movie);
+        $movie->setRuntime($runtime);
+
         return new MovieOutputDTO(
             $movie->getId(),
             $movie->getTitle(),
             new GenreOutputDTO($movie->getGenre()->getId(), $movie->getGenre()->getName()),
             $movie->getReleased(),
             $priceCalculator->getPrice($movie),
-            $movie->getRuntime()
+            $runtime
         );
     }
 

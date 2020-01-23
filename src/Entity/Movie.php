@@ -42,6 +42,11 @@ class Movie
      */
     private $runtime;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imdbID;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Movie
     public function setRuntime(?int $runtime): self
     {
         $this->runtime = $runtime;
+
+        return $this;
+    }
+
+    public function getImdbID(): ?string
+    {
+        return $this->imdbID;
+    }
+
+    public function setImdbID(?string $imdbID): self
+    {
+        $this->imdbID = $imdbID;
 
         return $this;
     }
