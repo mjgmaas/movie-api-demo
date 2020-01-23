@@ -1,6 +1,10 @@
-## PHP example app
+# PHP example app
 
 Simple REST api created with Symfony 4 running in docker
+
+## Build and unittests result
+
+![](https://github.com/mjgmaas/movie-api-demo/workflows/PHP%20Composer/badge.svg)
 
 ## Requirements
 
