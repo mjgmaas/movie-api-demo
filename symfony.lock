@@ -1,4 +1,10 @@
 {
+    "aws/aws-sdk-php": {
+        "version": "3.133.14"
+    },
+    "bref/bref": {
+        "version": "0.5.14"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -90,6 +96,15 @@
             "config/packages/fos_rest.yaml"
         ]
     },
+    "guzzlehttp/guzzle": {
+        "version": "6.5.2"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.6.1"
+    },
     "hoa/compiler": {
         "version": "3.17.08.08"
     },
@@ -129,6 +144,9 @@
     "hoa/zformat": {
         "version": "1.17.01.10"
     },
+    "hollodotme/fast-cgi-client": {
+        "version": "v3.0.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -147,8 +165,14 @@
             "ref": "384cec52df45f3bfd46a09930d6960a58872b268"
         }
     },
+    "mnapoli/silly": {
+        "version": "1.7.2"
+    },
     "monolog/monolog": {
         "version": "1.25.3"
+    },
+    "mtdowling/jmespath.php": {
+        "version": "2.5.0"
     },
     "nelmio/api-doc-bundle": {
         "version": "3.0",
@@ -187,6 +211,9 @@
     "php": {
         "version": "7.3"
     },
+    "php-di/invoker": {
+        "version": "2.0.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
     },
@@ -202,8 +229,20 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
+    "psr/http-server-handler": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "1.1.2"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
+    },
+    "riverline/multipart-parser": {
+        "version": "2.0.8"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -361,6 +400,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.13.1"
+    },
+    "symfony/process": {
+        "version": "v4.3.11"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.4"
